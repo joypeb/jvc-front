@@ -4,23 +4,27 @@ import Image from "next/image";
 import React from "react";
 import {AiOutlineUser} from "react-icons/ai";
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { styled, keyframes } from '@stitches/react';
-import { CaretDownIcon } from '@radix-ui/react-icons';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import {styled, keyframes} from '@stitches/react';
+import {CaretDownIcon, ChevronRightIcon, DotFilledIcon} from '@radix-ui/react-icons';
 import {violet, mauve, indigo, purple, blackA, gray} from '@radix-ui/colors';
+import {FaUser} from "react-icons/fa";
+
 
 export default function HeaderComponent() {
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <div className={styles.navLogo}>
-                    <Link href="/" >
+                    {/*<Link href="/">
                         <Image
                             src="/logo.png"
                             alt="예수비전교회 로고"
                             width={60}
                             height={30}
                         />
-                    </Link>
+                    </Link>*/}
+                    <h1 className={styles.logo}>JVC</h1>
                 </div>
 
                 <NavigationMenuRoot>
@@ -116,12 +120,12 @@ export default function HeaderComponent() {
                         </NavigationMenu.Item>
 
                         <NavigationMenuIndicator>
-                            <Arrow />
+                            <Arrow/>
                         </NavigationMenuIndicator>
                     </NavigationMenuList>
 
                     <ViewportPosition>
-                        <NavigationMenuViewport />
+                        <NavigationMenuViewport/>
                     </ViewportPosition>
                 </NavigationMenuRoot>
 
@@ -132,10 +136,35 @@ export default function HeaderComponent() {
                     <li className={styles.navContent}>교제의장</li>
                 </ul>*/}
 
-                <div>
-                    <button className={styles.navUserBtn}>
-                        <AiOutlineUser size={30}/>
-                    </button>
+                <div className={styles.navUserBtnBox}>
+                    {/*<button className={styles.navUserBtn}>
+                        <AiOutlineUser size={24}/>
+                    </button>*/}
+
+                    <DropdownMenu.Root>
+                        <DropdownMenu.Trigger asChild>
+                            <IconButton aria-label="Customise options">
+                                <FaUser size={20}/>
+                            </IconButton>
+                        </DropdownMenu.Trigger>
+
+                        <DropdownMenu.Portal>
+                            <DropdownMenuContent sideOffset={5}>
+                                <DropdownMenuItem>
+                                    로그인
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    내 정보
+                                </DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>
+                                    관리자 페이지
+                                </DropdownMenuItem>
+                                <DropdownMenuArrow />
+                            </DropdownMenuContent>
+                        </DropdownMenu.Portal>
+                    </DropdownMenu.Root>
+
                 </div>
             </nav>
         </header>
@@ -154,43 +183,43 @@ export default function HeaderComponent() {
 ));*/
 
 const enterFromRight = keyframes({
-    from: { transform: 'translateX(200px)', opacity: 0 },
-    to: { transform: 'translateX(0)', opacity: 1 },
+    from: {transform: 'translateX(200px)', opacity: 0},
+    to: {transform: 'translateX(0)', opacity: 1},
 });
 
 const enterFromLeft = keyframes({
-    from: { transform: 'translateX(-200px)', opacity: 0 },
-    to: { transform: 'translateX(0)', opacity: 1 },
+    from: {transform: 'translateX(-200px)', opacity: 0},
+    to: {transform: 'translateX(0)', opacity: 1},
 });
 
 const exitToRight = keyframes({
-    from: { transform: 'translateX(0)', opacity: 1 },
-    to: { transform: 'translateX(200px)', opacity: 0 },
+    from: {transform: 'translateX(0)', opacity: 1},
+    to: {transform: 'translateX(200px)', opacity: 0},
 });
 
 const exitToLeft = keyframes({
-    from: { transform: 'translateX(0)', opacity: 1 },
-    to: { transform: 'translateX(-200px)', opacity: 0 },
+    from: {transform: 'translateX(0)', opacity: 1},
+    to: {transform: 'translateX(-200px)', opacity: 0},
 });
 
 const scaleIn = keyframes({
-    from: { transform: 'rotateX(-30deg) scale(0.9)', opacity: 0 },
-    to: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
+    from: {transform: 'rotateX(-30deg) scale(0.9)', opacity: 0},
+    to: {transform: 'rotateX(0deg) scale(1)', opacity: 1},
 });
 
 const scaleOut = keyframes({
-    from: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
-    to: { transform: 'rotateX(-10deg) scale(0.95)', opacity: 0 },
+    from: {transform: 'rotateX(0deg) scale(1)', opacity: 1},
+    to: {transform: 'rotateX(-10deg) scale(0.95)', opacity: 0},
 });
 
 const fadeIn = keyframes({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
+    from: {opacity: 0},
+    to: {opacity: 1},
 });
 
 const fadeOut = keyframes({
-    from: { opacity: 1 },
-    to: { opacity: 0 },
+    from: {opacity: 1},
+    to: {opacity: 0},
 });
 
 const NavigationMenuRoot = styled(NavigationMenu.Root, {
@@ -210,7 +239,7 @@ const NavigationMenuList = styled(NavigationMenu.List, {
     listStyle: 'none',
     /*boxShadow: `0 2px 10px ${blackA.blackA7}`,*/
     margin: 0,
-    cursor:'pointer'
+    cursor: 'pointer'
 });
 
 const itemStyles = {
@@ -220,10 +249,10 @@ const itemStyles = {
     fontWeight: 500,
     lineHeight: 1,
     borderRadius: 4,
-    fontSize: 15,
+    fontSize: 18,
     color: gray.gray12,
     /*'&:focus': { boxShadow: `0 0 0 2px ${gray.gray7}` },*/
-    '&:hover': { color: gray.gray12 },
+    '&:hover': {color: gray.gray12},
 };
 
 const NavigationMenuTrigger = styled(NavigationMenu.Trigger, {
@@ -233,17 +262,17 @@ const NavigationMenuTrigger = styled(NavigationMenu.Trigger, {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 2,
-    width:'100px'
+    width: '100px'
 });
 
 const NavigationMenuLink = styled(NavigationMenu.Link, {
     ...itemStyles,
     display: 'block',
     textDecoration: 'none',
-    fontSize: 15,
+    fontSize: 18,
     lineHeight: 1,
-    width:'100px',
-    textAlign:'center'
+    width: '100px',
+    textAlign: 'center'
 });
 
 const NavigationMenuContent = styled(NavigationMenu.Content, {
@@ -251,13 +280,13 @@ const NavigationMenuContent = styled(NavigationMenu.Content, {
     top: 0,
     left: 0,
     width: '100%',
-    '@media only screen and (min-width: 600px)': { width: 'auto' },
+    '@media only screen and (min-width: 600px)': {width: 'auto'},
     animationDuration: '250ms',
     animationTimingFunction: 'ease',
-    '&[data-motion="from-start"]': { animationName: enterFromLeft },
-    '&[data-motion="from-end"]': { animationName: enterFromRight },
-    '&[data-motion="to-start"]': { animationName: exitToLeft },
-    '&[data-motion="to-end"]': { animationName: exitToRight },
+    '&[data-motion="from-start"]': {animationName: enterFromLeft},
+    '&[data-motion="from-end"]': {animationName: enterFromRight},
+    '&[data-motion="to-start"]': {animationName: exitToLeft},
+    '&[data-motion="to-end"]': {animationName: exitToRight},
 });
 
 const NavigationMenuIndicator = styled(NavigationMenu.Indicator, {
@@ -268,9 +297,9 @@ const NavigationMenuIndicator = styled(NavigationMenu.Indicator, {
     top: '100%',
     overflow: 'hidden',
     zIndex: 1,
-    transition: 'width, transform 250ms ease',
-    '&[data-state="visible"]': { animation: `${fadeIn} 200ms ease` },
-    '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` },
+    transition: 'width, transform 200ms ease',
+    '&[data-state="visible"]': {animation: `${fadeIn} 200ms ease`},
+    '&[data-state="hidden"]': {animation: `${fadeOut} 200ms ease`},
 });
 
 const NavigationMenuViewport = styled(NavigationMenu.Viewport, {
@@ -279,13 +308,13 @@ const NavigationMenuViewport = styled(NavigationMenu.Viewport, {
     marginTop: 10,
     width: '100%',
     backgroundColor: 'white',
-    borderRadius: 15,
+    borderRadius: 12,
     overflow: 'hidden',
     boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
     height: 'var(--radix-navigation-menu-viewport-height)',
-    transition: 'width, height, 300ms ease',
-    '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
-    '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` },
+    transition: 'width, height, 200ms ease',
+    '&[data-state="open"]': {animation: `${scaleIn} 200ms ease`},
+    '&[data-state="closed"]': {animation: `${scaleOut} 200ms ease`},
     '@media only screen and (min-width: 600px)': {
         width: 'var(--radix-navigation-menu-viewport-width)',
     },
@@ -319,7 +348,7 @@ const List = styled('ul', {
     },
 });
 
-const ListItem = React.forwardRef(({ children, title, ...props }, forwardedRef) => (
+const ListItem = React.forwardRef(({children, title, ...props}, forwardedRef) => (
     <li>
         <NavigationMenu.Link asChild>
             <ListItemLink {...props} ref={forwardedRef}>
@@ -336,11 +365,11 @@ const ListItemLink = styled('a', {
     textDecoration: 'none',
     userSelect: 'none',
     padding: 12,
-    borderRadius: 6,
+    borderRadius: 12,
     fontSize: 15,
     lineHeight: 1,
-    '&:focus': { boxShadow: `0 0 0 2px ${gray.gray7}` },
-    '&:hover': { backgroundColor: gray.gray3 },
+    '&:focus': {boxShadow: `0 0 0 2px ${gray.gray7}`},
+    '&:hover': {backgroundColor: gray.gray3},
 });
 
 const ListItemHeading = styled('div', {
@@ -364,12 +393,12 @@ const Callout = styled('a', {
     width: '100%',
     height: '100%',
     background: `linear-gradient(135deg, ${purple.purple9} 0%, ${indigo.indigo9} 100%);`,
-    borderRadius: 6,
+    borderRadius: 12,
     padding: 25,
     textDecoration: 'none',
     outline: 'none',
     userSelect: 'none',
-    '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+    '&:focus': {boxShadow: `0 0 0 2px ${violet.violet7}`},
 });
 
 const CalloutHeading = styled('div', {
@@ -403,7 +432,7 @@ const CaretDown = styled(CaretDownIcon, {
     color: violet.violet10,
     top: 1,
     transition: 'transform 250ms ease',
-    '[data-state=open] &': { transform: 'rotate(-180deg)' },
+    '[data-state=open] &': {transform: 'rotate(-180deg)'},
 });
 
 const Arrow = styled('div', {
@@ -415,3 +444,104 @@ const Arrow = styled('div', {
     transform: 'rotate(45deg)',
     borderTopLeftRadius: 2,
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+const slideUpAndFade = keyframes({
+    '0%': { opacity: 0, transform: 'translateY(2px)' },
+    '100%': { opacity: 1, transform: 'translateY(0)' },
+});
+
+const slideRightAndFade = keyframes({
+    '0%': { opacity: 0, transform: 'translateX(-2px)' },
+    '100%': { opacity: 1, transform: 'translateX(0)' },
+});
+
+const slideDownAndFade = keyframes({
+    '0%': { opacity: 0, transform: 'translateY(-2px)' },
+    '100%': { opacity: 1, transform: 'translateY(0)' },
+});
+
+const slideLeftAndFade = keyframes({
+    '0%': { opacity: 0, transform: 'translateX(2px)' },
+    '100%': { opacity: 1, transform: 'translateX(0)' },
+});
+
+const DropContentStyles = {
+    minWidth: 220,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 5,
+    boxShadow:
+        '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+    animationDuration: '400ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    zIndex:100,
+    willChange: 'transform, opacity',
+    '&[data-state="open"]': {
+        '&[data-side="top"]': { animationName: slideDownAndFade },
+        '&[data-side="right"]': { animationName: slideLeftAndFade },
+        '&[data-side="bottom"]': { animationName: slideUpAndFade },
+        '&[data-side="left"]': { animationName: slideRightAndFade },
+    },
+};
+
+const DropdownMenuContent = styled(DropdownMenu.Content, DropContentStyles);
+
+const DropdownMenuArrow = styled(DropdownMenu.Arrow, { fill: 'white' });
+
+const DropItemStyles = {
+    all: 'unset',
+    fontSize: 13,
+    lineHeight: 1,
+    color: gray.gray12,
+    borderRadius: 6,
+    display: 'flex',
+    alignItems: 'center',
+    height: 25,
+    padding: '0 5px',
+    position: 'relative',
+    paddingLeft: 25,
+    userSelect: 'none',
+    cursor:'pointer',
+
+    '&[data-disabled]': {
+        color: mauve.mauve8,
+        pointerEvents: 'none',
+    },
+
+    '&[data-highlighted]': {
+        backgroundColor: gray.gray3,
+        color: gray.gray12,
+    },
+};
+
+const DropdownMenuItem = styled(DropdownMenu.Item, DropItemStyles);
+
+const DropdownMenuSeparator = styled(DropdownMenu.Separator, {
+    height: 1,
+    backgroundColor: gray.gray6,
+    margin: 5,
+});
+
+const IconButton = styled('button', {
+    all: 'unset',
+    fontFamily: 'inherit',
+    height: 35,
+    width: 35,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: gray.gray12,
+    cursor:'pointer'
+})

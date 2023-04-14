@@ -4,13 +4,14 @@ import Nav from '../components/header/Nav';
 import Image from "next/image";
 import styles from "../styles/index.module.scss";
 import churchPic from '../public/church.jpg';
+import Dropdown from "@/components/header/Dropdown";
 
 
 
 
 
 export default function Home() {
-    useEffect(() => {
+    /*useEffect(() => {
         let observer = new IntersectionObserver((e) => {
             e.forEach((text) => {
                 const target = text.target as HTMLElement;
@@ -25,7 +26,7 @@ export default function Home() {
         let mainImgTextTitle = document.getElementById("mainImgTextTitle");
 
         observer.observe(mainImgTextTitle);
-    })
+    })*/
 
 
   return (

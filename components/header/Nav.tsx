@@ -14,7 +14,7 @@ const NavigationMenuDemo = () => {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <List>
-                            {/*<li style={{ gridRow: 'span 3' }}>
+                            <li style={{ gridRow: 'span 3' }}>
                                 <NavigationMenu.Link asChild>
                                     <Callout href="/">
                                         <svg aria-hidden width="38" height="38" viewBox="0 0 25 25" fill="white">
@@ -26,7 +26,7 @@ const NavigationMenuDemo = () => {
                                         <CalloutText>Unstyled, accessible components for React.</CalloutText>
                                     </Callout>
                                 </NavigationMenu.Link>
-                            </li>*/}
+                            </li>
 
                             <ListItem href="https://stitches.dev/" title="인사말">
                                 교회를 소개하는 내용입니다
@@ -37,7 +37,7 @@ const NavigationMenuDemo = () => {
                             <ListItem href="https://stitches.dev/" title="선교의 교회">
                                 선교현황과 선교의 비전을 소개하는 페이지입니다
                             </ListItem>
-                            <ListItem href="https://stitches.dev/" title="교회 행사">
+                            {/*<ListItem href="https://stitches.dev/" title="교회 행사">
                                 교회에서 진행하는 행사에 대해 소개하는 페이지입니다
                             </ListItem>
                             <ListItem href="/colors" title="교회 발자취">
@@ -45,7 +45,7 @@ const NavigationMenuDemo = () => {
                             </ListItem>
                             <ListItem href="https://icons.radix-ui.com/" title="예배와 약도">
                                 예배시간과 오시는 길을 소개하는 페이지입니다
-                            </ListItem>
+                            </ListItem>*/}
                         </List>
                     </NavigationMenuContent>
                 </NavigationMenu.Item>

@@ -24,6 +24,12 @@
   align-items: center;
 }
 
+.logo {
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
 .navLogo {
   pointer-events: auto;
   display: flex;
@@ -53,6 +59,11 @@
   cursor: pointer;
 }
 
+.navUserBtnBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 /*.listRoot{
