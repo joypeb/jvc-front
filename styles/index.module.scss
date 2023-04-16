@@ -1,3 +1,5 @@
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css';
+
 .mainImgBox{
   position: relative;
   z-index: 1;
@@ -61,7 +63,7 @@
     opacity: 0;
     transform: translate3d(0, 80%, 0);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateZ(0);
   }
@@ -69,9 +71,63 @@
 
 .introduce{
   width: 100vw;
-  height: 1000px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.introduceTextBox {
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.introduceTitle {
+  font-size: 40px;
+  color: var(--gray12);
+  transition-delay: 200ms;
+}
+
+.introduceContentBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.introduceContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  border: 1px solid var(--gray7);
+  background-color: var(--gray1);
+  color: var(--gray12);
+  transition-delay: 600ms;
+}
+
+.introduceContentText {
+  font-size: 26px;
+  color: var(--gray12);
+  transition-delay: 1000ms;
+}
+
+.introduceTitle, .introduceContent, .introduceContentText {
+  opacity: 0;
+  transition: 1s;
+}
+
+.youtubeBox {
+  width: 100vw;
+  height: 1000px;
+  background-color: darkblue;
+}
 
 @media (max-width: 1024px) {
   .mainImgTextBox {

@@ -11,7 +11,7 @@ import Dropdown from "@/components/header/Dropdown";
 
 
 export default function Home() {
-    /*useEffect(() => {
+    useEffect(() => {
         let observer = new IntersectionObserver((e) => {
             e.forEach((text) => {
                 const target = text.target as HTMLElement;
@@ -23,10 +23,18 @@ export default function Home() {
             });
         });
 
-        let mainImgTextTitle = document.getElementById("mainImgTextTitle");
+        let introduceTitle = document.getElementById("introduceTitle");
+        let introduceContentBox = document.getElementById("introduceContentBox");
+        let introduceContent = document.querySelectorAll("div");
+        let introduceContentText = document.getElementById("introduceContentText");
 
-        observer.observe(mainImgTextTitle);
-    })*/
+        observer.observe(introduceTitle);
+        introduceContent.forEach((e) => {
+            observer.observe(e);
+        })
+        observer.observe(introduceContentText);
+
+    })
 
 
   return (
@@ -50,13 +58,23 @@ export default function Home() {
                 objectPosition="left"
                 quality={100}
             />
-
         </div>
 
         <div className={styles.introduce}>
-
+            <div className={styles.introduceTextBox}>
+                <h1 className={styles.introduceTitle} id="introduceTitle">하나님이 기뻐하시고 성도가 행복한 교회</h1>
+                <div className={styles.introduceContentBox} id="introduceContentBox">
+                    <div className={styles.introduceContent}>믿음</div>
+                    <div className={styles.introduceContent}>소망</div>
+                    <div className={styles.introduceContent}>사랑</div>
+                    <div className={styles.introduceContent}>나눔</div>
+                    <div className={styles.introduceContent}>섬김</div>
+                </div>
+                <p className={styles.introduceContentText} id="introduceContentText">우리는 이러한 마음으로 교회를 만들어 나갑니다</p>
+            </div>
         </div>
 
+        <div className={styles.youtubeBox}></div>
     </Fragment>
   )
 }
