@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "../../styles/header.module.scss";
 import Image from "next/image";
-import React from "react";
+import React, {useEffect} from "react";
 import {AiOutlineUser} from "react-icons/ai";
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -12,8 +12,20 @@ import {FaUser} from "react-icons/fa";
 
 
 export default function HeaderComponent() {
+    useEffect(() => {
+        window.onscroll = function () {
+            let scrollTopHeader = document.getElementById('header');
+            if (scrollTopHeader != null) {
+                if (document.documentElement.scrollTop > 50) {
+                    scrollTopHeader.style.backdropFilter = 'blur(5px)';
+                } else {
+                    scrollTopHeader.style.backdropFilter = 'blur(0)';
+                }
+            }
+        };
+    }, []);
     return (
-        <header className={styles.header}>
+        <header className={styles.header} id="header">
             <nav className={styles.nav}>
                 <div className={styles.navLogo}>
                     {/*<Link href="/">
@@ -156,11 +168,11 @@ export default function HeaderComponent() {
                                 <DropdownMenuItem>
                                     내 정보
                                 </DropdownMenuItem>
-                                <DropdownMenuSeparator />
+                                <DropdownMenuSeparator/>
                                 <DropdownMenuItem>
                                     관리자 페이지
                                 </DropdownMenuItem>
-                                <DropdownMenuArrow />
+                                <DropdownMenuArrow/>
                             </DropdownMenuContent>
                         </DropdownMenu.Portal>
                     </DropdownMenu.Root>
@@ -446,35 +458,24 @@ const Arrow = styled('div', {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
 const slideUpAndFade = keyframes({
-    '0%': { opacity: 0, transform: 'translateY(2px)' },
-    '100%': { opacity: 1, transform: 'translateY(0)' },
+    '0%': {opacity: 0, transform: 'translateY(2px)'},
+    '100%': {opacity: 1, transform: 'translateY(0)'},
 });
 
 const slideRightAndFade = keyframes({
-    '0%': { opacity: 0, transform: 'translateX(-2px)' },
-    '100%': { opacity: 1, transform: 'translateX(0)' },
+    '0%': {opacity: 0, transform: 'translateX(-2px)'},
+    '100%': {opacity: 1, transform: 'translateX(0)'},
 });
 
 const slideDownAndFade = keyframes({
-    '0%': { opacity: 0, transform: 'translateY(-2px)' },
-    '100%': { opacity: 1, transform: 'translateY(0)' },
+    '0%': {opacity: 0, transform: 'translateY(-2px)'},
+    '100%': {opacity: 1, transform: 'translateY(0)'},
 });
 
 const slideLeftAndFade = keyframes({
-    '0%': { opacity: 0, transform: 'translateX(2px)' },
-    '100%': { opacity: 1, transform: 'translateX(0)' },
+    '0%': {opacity: 0, transform: 'translateX(2px)'},
+    '100%': {opacity: 1, transform: 'translateX(0)'},
 });
 
 const DropContentStyles = {
@@ -486,19 +487,19 @@ const DropContentStyles = {
         '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
     animationDuration: '400ms',
     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    zIndex:100,
+    zIndex: 100,
     willChange: 'transform, opacity',
     '&[data-state="open"]': {
-        '&[data-side="top"]': { animationName: slideDownAndFade },
-        '&[data-side="right"]': { animationName: slideLeftAndFade },
-        '&[data-side="bottom"]': { animationName: slideUpAndFade },
-        '&[data-side="left"]': { animationName: slideRightAndFade },
+        '&[data-side="top"]': {animationName: slideDownAndFade},
+        '&[data-side="right"]': {animationName: slideLeftAndFade},
+        '&[data-side="bottom"]': {animationName: slideUpAndFade},
+        '&[data-side="left"]': {animationName: slideRightAndFade},
     },
 };
 
 const DropdownMenuContent = styled(DropdownMenu.Content, DropContentStyles);
 
-const DropdownMenuArrow = styled(DropdownMenu.Arrow, { fill: 'white' });
+const DropdownMenuArrow = styled(DropdownMenu.Arrow, {fill: 'white'});
 
 const DropItemStyles = {
     all: 'unset',
@@ -513,7 +514,7 @@ const DropItemStyles = {
     position: 'relative',
     paddingLeft: 25,
     userSelect: 'none',
-    cursor:'pointer',
+    cursor: 'pointer',
 
     '&[data-disabled]': {
         color: mauve.mauve8,
@@ -543,5 +544,5 @@ const IconButton = styled('button', {
     alignItems: 'center',
     justifyContent: 'center',
     color: gray.gray12,
-    cursor:'pointer'
+    cursor: 'pointer'
 })

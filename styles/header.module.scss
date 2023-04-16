@@ -1,6 +1,6 @@
 
 .header {
-  position: absolute;
+  position: fixed;
   left: 0;
 
   width: 100%;
@@ -12,12 +12,14 @@
   align-items: center;
 
   z-index: 100;
+
+  transition: 0.5s;
 }
 
 .nav {
   width: 1000px;
   height: 60px;
-  padding: 20px 0 10px 0;
+  padding: 20px 0 20px 0;
 
   display: flex;
   justify-content: space-between;
