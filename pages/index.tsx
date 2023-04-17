@@ -7,37 +7,72 @@ import churchPic from '../public/church.jpg';
 import Dropdown from "@/components/header/Dropdown";
 
 
-
-
-
 export default function Home() {
     useEffect(() => {
-        let observer = new IntersectionObserver((e) => {
-            e.forEach((text) => {
-                const target = text.target as HTMLElement;
-                if(text.isIntersecting) {
-                    target.style.opacity = "1";
-                } else {
-                    target.style.opacity = "0";
-                }
-            });
-        });
 
-        let introduceTitle = document.getElementById("introduceTitle");
+    /*let observer = new IntersectionObserver((e) => {
+        e.forEach((text) => {
+            if(text.isIntersecting) {
+                text.target
+            } else {
+                target.style.opacity = "0";
+            }
+        });
+    },{threshold:0.1});
+
+    let introduceTitle = document.getElementById("introduceTitle");
+    let introduceContentBox = document.getElementById("introduceContentBox");
+    let introduceContent = document.querySelectorAll("div");
+    let introduceContentText = document.getElementById("introduceContentText");
+
+    observer.observe(introduceTitle);
+    introduceContent.forEach((e) => {
+        observer.observe(e);
+    })
+    observer.observe(introduceContentText);*/
+
+        const introduceTitle = document.getElementById("introduceTitle");
         let introduceContentBox = document.getElementById("introduceContentBox");
         let introduceContent = document.querySelectorAll("div");
         let introduceContentText = document.getElementById("introduceContentText");
 
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    if (entry.target === introduceTitle) {
+                        introduceTitle.style.opacity = "1";
+                    } else if (entry.target === introduceContentBox) {
+                        introduceContentBox.style.opacity = "1";
+                    } else if (entry.target === introduceContentText) {
+                        introduceContentText.style.opacity = "1";
+                    }
+                } else {
+                    if (entry.target === introduceTitle) {
+                        introduceTitle.style.opacity = "0";
+                    } else if (entry.target === introduceContentBox) {
+                        introduceContentBox.style.opacity = "0";
+                    } else if (entry.target === introduceContentText) {
+                        introduceContentText.style.opacity = "0";
+                    }
+                }
+            },
+            {
+                threshold: 1 // 뷰포트 안에 들어온 비율이 50% 이상일 때 콜백 함수 실행
+            }
+        );
+
         observer.observe(introduceTitle);
-        introduceContent.forEach((e) => {
-            observer.observe(e);
-        })
+        observer.observe(introduceContentBox);
         observer.observe(introduceContentText);
 
-    })
+        return () => {
+            observer.unobserve(introduceTitle);
+            observer.unobserve(introduceContentBox);
+            observer.unobserve(introduceContentText);
+        };
+    }, []);
 
-
-  return (
+return (
     <Fragment>
         <Header/>
         {/*<Nav/>*/}
@@ -76,5 +111,5 @@ export default function Home() {
 
         <div className={styles.youtubeBox}></div>
     </Fragment>
-  )
+)
 }

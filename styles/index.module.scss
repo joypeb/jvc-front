@@ -118,8 +118,7 @@
   transition-delay: 1000ms;
 }
 
-.introduceTitle, .introduceContent, .introduceContentText {
-  opacity: 0;
+.introduceTitle, .introduceContentBox, .introduceContentText {
   transition: 1s;
 }
 
