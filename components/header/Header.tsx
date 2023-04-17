@@ -17,7 +17,7 @@ export default function HeaderComponent() {
             let scrollTopHeader = document.getElementById('header');
             if (scrollTopHeader != null) {
                 if (document.documentElement.scrollTop > 50) {
-                    scrollTopHeader.style.backdropFilter = 'blur(5px)';
+                    scrollTopHeader.style.backdropFilter = 'blur(50px)';
                 } else {
                     scrollTopHeader.style.backdropFilter = 'blur(0)';
                 }
