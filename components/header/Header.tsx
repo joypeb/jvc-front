@@ -17,9 +17,9 @@ export default function HeaderComponent() {
             let scrollTopHeader = document.getElementById('header');
             if (scrollTopHeader != null) {
                 if (document.documentElement.scrollTop > 50) {
-                    scrollTopHeader.style.backdropFilter = 'blur(10px)';
+                    scrollTopHeader.style.backdropFilter = 'blur(15px)';
                 } else {
-                    scrollTopHeader.style.backdropFilter = 'blur(0)';
+                    scrollTopHeader.style.backdropFilter = 'blur(0px)';
                 }
             }
         };
