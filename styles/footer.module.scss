@@ -1,0 +1,45 @@
+@import 'https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css';
+
+.footerBox {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #414345;
+  color: var(--gray8);
+}
+
+.footer {
+  width: 1000px;
+  margin: 50px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 130px;
+}
+
+.churchName {
+  font-size: 34px;
+  font-weight: bold;
+}
+.churchNameEng{
+  font-size: 20px;
+}
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contentTel {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}

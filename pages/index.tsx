@@ -8,6 +8,7 @@ import Dropdown from "@/components/header/Dropdown";
 import {RxDividerVertical} from "react-icons/rx";
 import $ from "jquery";
 import Link from "next/link";
+import Footer from "@/components/footer/Footer";
 
 
 export default function Home() {
@@ -277,6 +278,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </Fragment>
     )
 }
